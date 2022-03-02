@@ -5,8 +5,8 @@ import "../node_modules/bootstrap/dist/css/bootstrap.css";
 import Home from "./component/pages/home";
 import About from "./component/pages/about";
 import Contact from "./component/pages/contact";
-import Login from './component/pages/login';
-import Signup from "./component/pages/signup";
+import Login from './component/user/login';
+import Signup from "./component/user/signup";
 import Navbar from "./component/layout/navbar";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom"; 
 
