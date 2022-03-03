@@ -1,0 +1,35 @@
+*{
+    padding: 0%;
+    margin: 0%;
+}
+.Login{
+
+    width: 450px;
+    height: 500px;
+    margin-left: 36%;
+    margin-top: 5%;
+    padding: 20px;
+    font-size: large;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    background-color: rgba(235, 206, 81, 0.952);
+    border: 2px solid brown;
+    border-radius: 2em;
+
+}
+.Login h1{
+    text-align: center;
+    color: blueviolet;
+}
+.Login input{
+    text-align:center ;
+    font-size: large;
+    width: 400px;
+    height: 50px;
+    border: 1px solid blue;
+    border-radius: 50em;
+    text-shadow: 2em;
+
+}
+.ErrorWarning{
+    color: red;
+}
