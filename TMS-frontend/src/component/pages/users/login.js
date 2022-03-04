@@ -23,7 +23,7 @@ function Login(setToken) {
         // console.log(event.target);
         const { name, value } = event.target; //destructuring
         setFormValues({ ...formValues, [name]: value });
-        // console.log(formValues);
+        console.log(formValues);
     }
 
     // Form Refresh
@@ -50,7 +50,7 @@ function Login(setToken) {
         
         if (body.username === username) {
             setToken(body);
-            navigate("/", { replace: true });
+            navigate("/trainer", { replace: true });
         } else {
             alert("Login Unsuccessful!");
         }
