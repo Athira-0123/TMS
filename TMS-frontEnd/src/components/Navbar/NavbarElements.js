@@ -1,8 +1,10 @@
 import styled from 'styled-components';
-import {Link as Link} from 'react-router-dom'
+// import {Link as Link} from 'react-router-dom'
 import {Link as LinkS} from 'react-scroll'
 import {Link as LinkR} from 'react-router-dom';
-import { BlockRounded, NoEncryption, StarTwoTone } from '@material-ui/icons';
+// import { BlockRounded, NoEncryption, StarTwoTone } from '@material-ui/icons';
+
+
 export const Nav = styled.nav`
 
 background: #000;
@@ -48,7 +50,7 @@ display: none;
     position: absolute;
     top: 0;
     right: 0;
-    transform: translated(-100%, 60%);
+    transform: translate(-100%, 60%);
     font-size: 1.8rem;
     cursor: pointer;
     color: #fff;
@@ -57,7 +59,7 @@ display: none;
 export const NavMenu = styled.ul`
 display: flex;
 align-items: center;
-life-style: none;
+list-style: none;
 text-align: center;
 margin-right:-22px;
 
