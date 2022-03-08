@@ -4,6 +4,7 @@ const enrollment_data = require("../model/EnrollmentModel");
 var multer = require('multer');
 var fs = require('fs');
 var path = require('path');
+const bcrypt=require('bcrypt');
 
 var storage = multer.diskStorage({
     destination: (req, file, cb) => {
@@ -64,7 +65,7 @@ enrollmentRouter.post("/",  upload.single('image') ,(req, res, next) => {
         zip_Code: req.body.zip_Code,
         phone : req.body.phone,
         email_address : req.body.email_address,
-        password:req.body.password,
+        password:bcrypt.hashSync(req.body.password,10),
         confirmpassword:req.body.confirmpassword,
         highest_qualification : req.body.highest_qualification,
         skill_set : req.body.skill_set,

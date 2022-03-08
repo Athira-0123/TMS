@@ -1,10 +1,13 @@
-import { Button } from '@mui/material';
+
 import { useState } from 'react';
 import { useNavigate } from 'react-router';
 import React from 'react';
 import {Link} from 'react-router-dom';
-import validateLogin from './ValidateLogin';
-import './Login.css';
+import validateLogin from './validateLogin';
+
+
+
+import './login.css';
 
 function Login() {
     // Storing Form Values
@@ -12,6 +15,8 @@ function Login() {
 
     // Manage Error Values
     const [formErrorValues, setFormErrorValues] = useState({});
+
+    
 
     // const [isSubmit, setIsSubmit] = useState(false);
 
@@ -23,7 +28,7 @@ function Login() {
         // console.log(event.target);
         const { name, value } = event.target; //destructuring
         setFormValues({ ...formValues, [name]: value });
-        // console.log(formValues);
+        //console.log(formValues);
     }
 
     // Form Refresh
@@ -32,14 +37,15 @@ function Login() {
         let validationErrors = validateLogin(formValues);
         setFormErrorValues(validationErrors);
         if(Object.keys(validationErrors).length === 0)
-            userLogin();
+        
+            userLogin()
     }
 
 
     const userLogin = async () => {
         const username = formValues.username;
         const password = formValues.password;
-        const response = await fetch("http://localhost:5000/api/user/login", {
+        const response = await fetch("http://localhost:5001/api/user/login", {
             method: 'post',
             body: JSON.stringify({ username, password }),
             headers: {
@@ -47,38 +53,55 @@ function Login() {
             }
         })
         const body = await response.json();
-        
-        if (body.username === username) {
-            navigate("/", { replace: true });
-        } else {
-            alert("Login Unsuccessful!");
+        console.log(body)
+        alert(body.message)
+        if (body.message === 'Authentication success.') {
+            localStorage.setItem("hornbill",body.token);
+            navigate(`/trainer/${body.id}`, { replace: true });
+            
+            
         }
+        if(body.message==='You are now logged in as admin'){
+            navigate('/admin',{replace:true})
+        } 
+        
     };
+
+    
+   
 
 
     return (
-        <div className='loginpage'>
-        <div >
+
+        <div className='wrapper' >
             
-                <form onSubmit={handleSubmit} className='Login'>
-                <h1 className='head1'>Login</h1> <br/>
-                <input type="email" name='username' placeholder='Enter Username' required="" value={formValues.username} onChange={handleChange} />
+                <form onSubmit={handleSubmit} className='inner'>
+                <h3 >Login</h3> <br/>
+                <label className="form-group">
+                    <input type="email" name='username'  className="form-control" required="" value={formValues.username} onChange={handleChange} />
+					<span>   Email address *</span>
+                    <p className='error'>{formErrorValues.username}</p>
+					<span className="border"></span>
+				</label>
+                <label className="form-group">
+                    <input type="password" name='password'  className="form-control"  required="" value={formValues.password} onChange={handleChange} /> 
+					<span>   Password *</span>
+                    <p className='error'>{formErrorValues.password}</p>
+					<span className="border"></span>
+				</label>
+                
+                <div className="btns">
+                    <button className='alink' type='submit' value="Submit application"> Submit </button>
+                </div>
                 <br/>
-                <p className='ErrorWarning'>{formErrorValues.username}</p>
-                <br/>
-                <input type="password" name='password' placeholder='Enter password'  required="" value={formValues.password} onChange={handleChange} /> 
-                <br/><br/>
-                <p className='ErrorWarning'>{formErrorValues.password}</p> 
-                <br/>
-                <Link to='/enroll' className='newSignup'>SignUp</Link>
-                <br/><br/>
-                <Button  variant='contained' color='primary'>Submit</Button>
+                <Link to='/enroll' className='next'>Not enrolled?SignUp</Link>
+                
             
                 </form>
             
-        </div>
         </div>
     );
 }
 
 export default Login;
+

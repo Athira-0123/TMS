@@ -34,7 +34,7 @@ function approvemail(id){
       <ul>
       <li>ICTAK ID : ${profile._id}</li> 
       <li>Email :${profile.email_address}</li>  
-      <li>Password :${profile.password}</li>   
+      <li>Password :${profile.confirmpassword}</li>   
       <li>EmploymentType :${profile.emptype}</li>  
       </ul>
       `
@@ -97,4 +97,4 @@ adminRouter.delete('/deleteData',function(req,res){
 
 module.exports = adminRouter;
 
-//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
+//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

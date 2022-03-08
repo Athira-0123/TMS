@@ -1,6 +1,7 @@
 const mongoose = require('mongoose');
 mongoose.connect('mongodb+srv://userone:userone@fsdfiles.ltrsv.mongodb.net/tms?retryWrites=true&w=majority');
 const Schema = mongoose.Schema;
+const bcrypt = require('bcrypt');
 
 var enrollments = new Schema({
     first_name: String,
@@ -14,8 +15,14 @@ var enrollments = new Schema({
     state: String,
     zip_Code: String,
     phone : String,
-    email_address : String,
-    password:String,
+    email_address :{
+        type:String,
+        required:true,
+    },
+    password:{
+        type:String,
+        required:true,
+    },
     confirmpassword:String,
     highest_qualification : String,
     skill_set : String,
@@ -28,7 +35,16 @@ var enrollments = new Schema({
         data: Buffer,
         contentType: String
     }
-});
+},{timestamps:true});
+
+        enrollments.methods.matchPassword = async function (enteredpassword) {
+            try {
+            return await bcrypt.compareSync(enteredpassword, this.password)
+            } catch (error) {
+            throw error
+            //console.log('error')
+            }
+            }
 
 var enrollments = mongoose.model('enrollments', enrollments);
 

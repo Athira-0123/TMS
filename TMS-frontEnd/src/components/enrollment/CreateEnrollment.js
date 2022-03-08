@@ -1,5 +1,5 @@
 import React, { useState,useEffect} from 'react';
-import { useNavigate } from "react-router-dom";
+import { useNavigate ,Link} from "react-router-dom";
 import Enrollvalidation from './Enrollvalidation';
 import './Enrollment.css';
 
@@ -72,9 +72,9 @@ function CreateEnrollment(props) {
             body: formData,
 
         })
-        const respBody = await response.json().then (
-            navigation("/") );
+        const respBody = await response.json().then (navigation("/") );
             alert(respBody)
+            
             //console.log(respBody)
     }
 
@@ -245,6 +245,8 @@ function CreateEnrollment(props) {
         <div className="btns">
           
           <button className='alink' type='submit' value="Submit application"> Submit </button>
+          <br/>
+          <Link to='/login' className='next'>Already enrolled?Login</Link>
         </div>
 				</form>
 			</div>
