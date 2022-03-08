@@ -9,6 +9,7 @@ export const Nav = styled.nav`
 
 background: #000;
 height: 80px;
+margin-top: -80px;
 display: flex;
 justify-content: center;
 align-items: center;
@@ -41,6 +42,17 @@ margin-left: 24px;
 font-weight: Bold;
 text-decoration: none;
 `;
+
+export const NavIcon = styled.img`
+width: 45px;
+height: 45px;
+justify-self: flex-start;
+align-items: center;
+cursor: pointer;
+display: flex;
+margin-left: 2px;
+margin-top: 15px;
+`
 
 export const MobileIcon = styled.div`
 display: none;
