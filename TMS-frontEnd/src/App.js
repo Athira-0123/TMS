@@ -3,8 +3,8 @@ import './App.css';
 // import Navbar from './components/Navbar';
 // import Sidebar from './components/Sidebar';
 import {BrowserRouter as Router,Routes,Route} from 'react-router-dom';
-import Home from './pages/index';
-// import Login from './pages/login';
+import Home from './pages';
+import SigninPage from './pages/Signin';
 
 function App() {
   return (
@@ -13,7 +13,7 @@ function App() {
     <Router> 
       <Routes>
         <Route path='/' element={<Home/>} exact/>
-        {/* <Route path='/login' element={<Login/>} exact/> */}
+        <Route path='/signin' element={<SigninPage/>} exact/>
 
       </Routes>
       

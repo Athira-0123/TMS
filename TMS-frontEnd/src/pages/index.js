@@ -4,6 +4,7 @@ import Navbar from '../components/Navbar';
 import Sidebar from '../components/Sidebar';
 import Services from '../components/Services';
 import Footer from '../components/Footer';
+import CourseCards from "../components/CourseCards";
 const Home = () => {
     const [isOpen,setIsOpen] = useState(false);
 
@@ -18,6 +19,7 @@ const Home = () => {
         <Navbar toggle={toggle} />
         <HeroSection/>
         <Services/>
+        <CourseCards/>
         <Footer/>
         </>
 
