@@ -73,7 +73,8 @@ cursor: pointer;
 
 export const SideBtnWrap = styled.div`
 display: flex;
-justify-content: center;
+justify-content: space-between;
+padding: 32px;
 
 `;
 

@@ -1,10 +1,16 @@
 import React from 'react';
+import { animateScroll as scroll } from 'react-scroll';
 import {FaFacebook,FaInstagram,FaYoutube,FaTwitter,FaLinkedin} from 'react-icons/fa';
 import { FooterContainer,FooterWrap,FooterLinksContainer, FooterLinksWrapper, FooterLinkItems, FooterLinkTitle, FooterLink,FooterH5, SocialMedia, SocialMediaWrap, SocialLogo, WebsiteRights, SocialIcons, SocialIconLink} from './FooterElements'; 
 
 
 
 const Footer = () => {
+
+    const toggleHome = () =>{
+        scroll.scrollToTop()
+    }
+
         return (
         
     <FooterContainer>
@@ -38,17 +44,17 @@ const Footer = () => {
                             <FooterH5>Phone: +91-495-2431432</FooterH5>
                     </FooterLinkItems>
                     <FooterLinkItems>
-                        <FooterLinkTitle>Social Media</FooterLinkTitle>
-                            <FooterLink to="/">Facebook</FooterLink>
-                            <FooterLink to="/">Instagram</FooterLink>
-                            <FooterLink to="/">Youtube</FooterLink>
-                            <FooterLink to="/">LinkedIn</FooterLink>
+                        <FooterLinkTitle>About Us</FooterLinkTitle>
+                            <FooterLink to="/">Careers</FooterLink>
+                            <FooterLink to="/">Support</FooterLink>
+                            <FooterLink to="/">Contact Us</FooterLink>
+                            <FooterLink to="/">Terms & Conditions</FooterLink>
                     </FooterLinkItems>
                 </FooterLinksWrapper>
             </FooterLinksContainer>
             <SocialMedia>
                 <SocialMediaWrap>
-                    <SocialLogo to='/'></SocialLogo>
+                    <SocialLogo to="/" onClick={toggleHome}>ICTAK</SocialLogo>
                         <WebsiteRights>ICTAK © {new Date().getFullYear()} All Rights Reserved.</WebsiteRights>
                             <SocialIcons>
                                 <SocialIconLink href="/" aria-label="Facebook">

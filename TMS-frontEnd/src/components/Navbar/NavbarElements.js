@@ -1,13 +1,11 @@
 import styled from 'styled-components';
-// import {Link as Link} from 'react-router-dom'
 import {Link as LinkS} from 'react-scroll'
 import {Link as LinkR} from 'react-router-dom';
-// import { BlockRounded, NoEncryption, StarTwoTone } from '@material-ui/icons';
 
 
 export const Nav = styled.nav`
 
-background: #000;
+background: ${({ scrollNav})=>(scrollNav ? '#000' : 'transparent')};
 height: 80px;
 margin-top: -80px;
 display: flex;
