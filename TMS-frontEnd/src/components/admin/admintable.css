@@ -1,15 +1,17 @@
 .container {
-  margin-top: 200px;
   padding: 0 100px;
+  margin: auto;
+  margin-top: 200px;
 }
 
 .thead {
-  background-color: #1976d2;
-  position: sticky;
+  background-color: #0091ea;
 }
+
 #id {
   color: white;
   font-size: large;
+  font-weight: bold;
   padding: 20px;
 }
 
@@ -22,7 +24,7 @@
   font-weight: 500;
 }
 .tablerow {
-  background-color: whitesmoke;
+  background-color: white;
 }
 
 #approve {
@@ -41,7 +43,7 @@
   background-color: red;
 }
 .text-pending {
-  color: #1976d2;
+  color: rgb(7, 53, 54);
   text-align: left;
   margin-bottom: 10px;
 }

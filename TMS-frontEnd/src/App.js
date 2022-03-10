@@ -9,6 +9,7 @@ import Allocate from './pages/Allocate';
 import ViewAllocations from './pages/ViewAllocations'
 import Login from './components/login/Login';
 import TrainerProfile from './pages/TrainerProfile';
+import AllocationForm from './components/admin/AllocationForm';
 
 
 
@@ -25,6 +26,7 @@ function App() {
         <Route path="/enroll" element={<CreateEnrollment/>} />
         <Route path="/admin" element={<AdminHome/>}/>
         <Route path="/admin/allocate" element={<Allocate/>}/>
+        <Route path='/admin/allocate/form' element={<AllocationForm/>}/>
         <Route path="/admin/view-allocations" element={<ViewAllocations/>}/>
         <Route path="*" element={<Error />} />
 

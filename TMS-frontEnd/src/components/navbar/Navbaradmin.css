@@ -4,11 +4,13 @@
 #logo-text {
   display: block;
   float: right;
-  margin-top: 25px;
+  margin-top: 15px;
+  color: black;
+  font-size: 18px;
 }
 #logo {
-  width: 50px;
-  margin: 10px;
+  width: 40px;
+  margin: 5px;
 }
 #linklog {
   display: block;
@@ -18,18 +20,18 @@
   margin-left: 5px;
 }
 h4 {
-  color: white;
+  color: black;
 }
 
 #list {
   text-decoration: none;
-  color: white;
+  color: black;
   font-size: 16px;
-  padding: 5px;
-  width: 350px;
+  padding: 4px;
+  width: 550px;
 }
 #list:hover {
-  background-color: white;
-  color: black;
-  border-radius: 20px;
+  background-color: #3498db;
+  color: whitesmoke;
+  border-radius: 10px;
 }

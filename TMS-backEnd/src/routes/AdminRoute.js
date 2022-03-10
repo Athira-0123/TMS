@@ -94,6 +94,15 @@ adminRouter.delete('/deleteData',function(req,res){
     })
   })
 
+adminRouter.get('/allocationtable',(req,res)=>{
+  enrollment_data.find({isApproved:true})
+  .then(function (enrollments) {
+    res.status(200).json(enrollments);
+
+
+  })
+})
+
 
 module.exports = adminRouter;
 

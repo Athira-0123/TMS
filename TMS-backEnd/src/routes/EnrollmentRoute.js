@@ -24,7 +24,7 @@ var upload = multer({ storage: storage });
 
 enrollmentRouter.get('/',function(req,res){
 
-  enrollment_data.find() 
+  enrollment_data.find({isApproved:false})
   .then(function (enrollments) {
     res.status(200).json(enrollments);
 
@@ -53,6 +53,7 @@ enrollmentRouter.post("/",  upload.single('image') ,(req, res, next) => {
   enrollment_data.find({email_address : req.body.email_address},(err,data)=>{
     if(data.length==0){
       var new_enrollment = {
+        isApproved:false,
         first_name: req.body.first_name,
         last_name: req.body.last_name,
         gender: req.body.gender,

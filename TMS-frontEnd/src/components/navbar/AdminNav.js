@@ -10,6 +10,7 @@ import Toolbar from '@mui/material/Toolbar';
 import List from '@mui/material/List';
 import Typography from '@mui/material/Typography';
 
+
 import IconButton from '@mui/material/IconButton';
 import MenuIcon from '@mui/icons-material/Menu';
 import ChevronLeftIcon from '@mui/icons-material/ChevronLeft';
@@ -21,6 +22,7 @@ import HomeIcon from '@mui/icons-material/Home';
 import ScheduleIcon from '@mui/icons-material/Schedule';
 import TableViewIcon from '@mui/icons-material/TableView';
 import LogoutIcon from '@mui/icons-material/Logout';
+
 
 
 
@@ -75,7 +77,8 @@ export default function AdminNav() {
   return (
     <Box sx={{ display: 'flex' }}>
       <CssBaseline />
-      <AppBar position="fixed" open={open} className='appbar'>
+      <AppBar position="fixed" open={open} className='appbar' 
+      style={{backgroundColor:'whitesmoke'}}>
         <Toolbar>
           <IconButton
             color="inherit"
@@ -84,7 +87,7 @@ export default function AdminNav() {
             edge="start"
             sx={{ mr: 2, ...(open && { display: 'none' }) }}
           >
-            <MenuIcon />
+            <MenuIcon htmlColor='black' />
           </IconButton>
           <Typography variant="h6" noWrap component="div">
           
@@ -104,9 +107,8 @@ export default function AdminNav() {
           '& .MuiDrawer-paper': {
             width: drawerWidth,
             boxSizing: 'border-box',
-            backgroundColor:'#1976d2',
-            
-            
+            backgroundColor:'whitesmoke'
+
             
           },
         }}
@@ -116,10 +118,11 @@ export default function AdminNav() {
         
       >
         <DrawerHeader className='drawer' >
-          <Avatar sx={{ bgcolor:'red' }} className='avatar'>A</Avatar>
-          <h4>Welcome Admin</h4>
+          <Avatar style={{ backgroundColor:'red'}} className='avatar'>A</Avatar>
+          <h4>Admin</h4>
+          
             <IconButton onClick={handleDrawerClose}>
-              {theme.direction === 'ltr' ? <ChevronLeftIcon htmlColor='white'/> : <ChevronRightIcon/>}
+              {theme.direction === 'ltr' ? <ChevronLeftIcon htmlColor='black' /> : <ChevronRightIcon htmlColor='black'/>}
             </IconButton>
           
         </DrawerHeader>
@@ -141,6 +144,7 @@ export default function AdminNav() {
         
         
       </Drawer>
+      
       
     </Box>
   );

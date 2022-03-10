@@ -48,7 +48,7 @@ return (
         
 	</Container>
     <div>
-            <p className="col-sm" style={{color:'white'}}>
+            <p className="col-sm" style={{color:'black'}}>
                 &copy;{new Date().getFullYear()} ICT Academy|All rights reserved| Terms of Service |Privacy
             </p>
         </div>

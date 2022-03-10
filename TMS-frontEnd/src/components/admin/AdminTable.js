@@ -1,17 +1,12 @@
 import React, { useEffect, useState } from 'react';
 import './admintable.css';
 
-import Table from '@mui/material/Table';
-import TableBody from '@mui/material/TableBody';
-import TableCell from '@mui/material/TableCell';
-import TableContainer from '@mui/material/TableContainer';
-import TableHead from '@mui/material/TableHead';
-import TableRow from '@mui/material/TableRow';
-import Paper from '@mui/material/Paper';
+
 import MenuItem from '@mui/material/MenuItem';
 import FormControl from '@mui/material/FormControl';
 import Select from '@mui/material/Select';
 import Button  from '@mui/material/Button';
+import { Table,TableContainer,Paper,TableCell,TableRow,TableHead,TableBody, Container } from '@mui/material';
 
 
 
@@ -39,7 +34,7 @@ function AdminTable(props) {
   async function fetchAPI(){
     const response=await fetch(`http://localhost:5001/api/enrollments`)
     const body=await response.json()
-    //console.log(body)
+    console.log(body)
     
     settableContent(body)
     
@@ -63,6 +58,8 @@ function AdminTable(props) {
     })
     const result=await response.json()
     alert(result)
+    window.location.href='/admin'
+    
     }
     
    
@@ -93,9 +90,8 @@ function AdminTable(props) {
   return (
     
     <div className='container'>
-    <p className='text-pending'>{tableContent.length} Pending requests left...</p>
     <TableContainer component={Paper}  >
-      <Table  sx={{ minWidth: 650 }} size="small" aria-label="a dense table">
+      <Table sx={{ minWidth: 650 }} aria-label="a dense table" className='table'>
         <TableHead >
           <TableRow  className='thead'>
             <TableCell id='id' align="right">Name</TableCell>
@@ -110,7 +106,7 @@ function AdminTable(props) {
             <TableCell id='id' align="right"></TableCell>
           </TableRow>
         </TableHead>
-        <TableBody>
+        <TableBody className='tbody'>
           {tableContent.length===0?<p className='text-pending'>No pending requests</p>:
           tableContent.map((row,key) => (
             
@@ -156,6 +152,8 @@ function AdminTable(props) {
         </TableBody>
       </Table>
     </TableContainer>
+    
+    
   </div>
     
   );
