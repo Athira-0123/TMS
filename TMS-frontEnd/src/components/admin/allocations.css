@@ -1,0 +1,156 @@
+table {
+  border-collapse: collapse;
+  margin: 30px auto;
+}
+
+/* Zebra striping */
+tr:nth-of-type(odd) {
+  background: #eee;
+}
+
+th {
+  background: #3498db;
+  color: white;
+  font-weight: bold;
+}
+
+td,
+th {
+  padding: 10px;
+
+  text-align: left;
+  font-size: 16px;
+}
+#allocate {
+  display: block;
+  margin-right: 5px;
+}
+#form {
+  text-decoration: none;
+  color: white;
+}
+
+/* 
+Max width before this PARTICULAR table gets nasty
+This query will take effect for any screen smaller than 760px
+and also iPads specifically.
+*/
+@media only screen and (max-width: 860px),
+  (min-device-width: 768px) and (max-device-width: 1024px) {
+  table {
+    width: 100%;
+    padding: 25px;
+  }
+
+  /* Force table to not be like tables anymore */
+  table,
+  thead,
+  tbody,
+  th,
+  td,
+  tr {
+    display: block;
+  }
+
+  /* Hide table headers (but not display: none;, for accessibility) */
+  thead tr {
+    position: absolute;
+    top: -9999px;
+    left: -9999px;
+  }
+
+  tr {
+    margin-bottom: 20px;
+    border-radius: 10px;
+    padding: 15px;
+    box-shadow: 3px 3px 3px 1px grey;
+  }
+
+  td {
+    /* Behave  like a "row" */
+    border: none;
+    padding: 5px;
+    font-size: 14px;
+    position: relative;
+    padding-left: 50%;
+  }
+
+  td:before {
+    /* Now like a table header */
+    position: absolute;
+    /* Top/left values mimic padding */
+    top: 6px;
+    left: 6px;
+    width: 45%;
+    padding-right: 10px;
+    white-space: nowrap;
+    /* Label the data */
+    content: attr(data-column);
+
+    color: #000;
+    font-weight: bold;
+  }
+}
+
+.form-search {
+  margin: 0 auto;
+  text-align: center;
+  margin-top: 200px;
+  margin-bottom: 10px;
+
+  font: bold 13px sans-serif;
+  max-width: 425px;
+  position: relative;
+}
+
+.form-search input {
+  width: 250px;
+
+  box-sizing: border-box;
+  border-bottom-left-radius: 2px;
+  border-top-left-radius: 2px;
+  background-color: #ffffff;
+  box-shadow: 1px 2px 4px 0 rgba(0, 0, 0, 0.08);
+  padding: 14px 15px 14px 40px;
+  border: 1px solid #b6c3cd;
+  border-right: 0;
+  color: #4e565c;
+  outline: none;
+  -webkit-appearance: none;
+}
+
+.form-search button {
+  border-bottom-right-radius: 2px;
+  border-top-right-radius: 2px;
+  background-color: #3498db;
+  box-shadow: 1px 2px 4px 0 rgba(0, 0, 0, 0.08);
+  color: #ffffff;
+  padding: 15px 22px;
+  margin-left: -4px;
+  cursor: pointer;
+  border: none;
+  outline: none;
+}
+
+.form-search i {
+  position: absolute;
+  top: 15px;
+  left: 20px;
+  font-size: 16px;
+  color: #80a3bd;
+}
+
+/* Placeholder color */
+
+.form-search input::-webkit-input-placeholder {
+  color: #879097;
+}
+
+.form-search input::-moz-placeholder {
+  color: #879097;
+  opacity: 1;
+}
+
+.form-search input:-ms-input-placeholder {
+  color: #879097;
+}

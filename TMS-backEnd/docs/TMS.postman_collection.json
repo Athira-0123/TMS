@@ -1,0 +1,123 @@
+{
+	"info": {
+		"_postman_id": "1e65689d-7f56-4c65-af89-aabd92a6a3e7",
+		"name": "TMS",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Create enrollment",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "first_name",
+							"value": "first_name",
+							"type": "text"
+						},
+						{
+							"key": "last_name",
+							"value": "last_name",
+							"type": "text"
+						},
+						{
+							"key": "gender",
+							"value": "gender",
+							"type": "text"
+						},
+						{
+							"key": "date_of_birth",
+							"value": "date_of_birth",
+							"type": "text"
+						},
+						{
+							"key": "address_line_1",
+							"value": "address_line_1",
+							"type": "text"
+						},
+						{
+							"key": "address_line_2",
+							"value": "address_line_2",
+							"type": "text"
+						},
+						{
+							"key": "city",
+							"value": "city",
+							"type": "text"
+						},
+						{
+							"key": "district",
+							"value": "district",
+							"type": "text"
+						},
+						{
+							"key": "state",
+							"value": "state",
+							"type": "text"
+						},
+						{
+							"key": "zip_Code",
+							"value": "zip_Code",
+							"type": "text"
+						},
+						{
+							"key": "phone",
+							"value": "phone",
+							"type": "text"
+						},
+						{
+							"key": "email_address",
+							"value": "email_address",
+							"type": "text"
+						},
+						{
+							"key": "highest_qualification",
+							"value": "highest_qualification",
+							"type": "text"
+						},
+						{
+							"key": "skill_set",
+							"value": "skill_set",
+							"type": "text"
+						},
+						{
+							"key": "current_company_name",
+							"value": "current_company_name",
+							"type": "text"
+						},
+						{
+							"key": "current_designation",
+							"value": "current_designation",
+							"type": "text"
+						},
+						{
+							"key": "ictak_course_handling",
+							"value": "ictak_course_handling",
+							"type": "text"
+						},
+						{
+							"key": "img",
+							"type": "file",
+							"src": "/C:/Users/hp/Desktop/user.jpg"
+						}
+					]
+				},
+				"url": {
+					"raw": "localhost:5001/api/enrollments",
+					"host": [
+						"localhost"
+					],
+					"port": "5001",
+					"path": [
+						"api",
+						"enrollments"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
