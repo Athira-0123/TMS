@@ -1,6 +1,7 @@
-import { Button } from '@mui/material';
+import { Button} from '@mui/material';
 import React, { useEffect, useState } from 'react';
-import { useNavigate } from 'react-router-dom';
+import {Link} from 'react-router-dom'
+import AllocationForm from './AllocationForm';
 import './allocations.css'
 
 
@@ -8,7 +9,9 @@ import './allocations.css'
 
 function AllocationTable(props) {
     const [tableContent, settableContent] = useState([])
+   
     
+      
   
     
   
@@ -16,6 +19,7 @@ function AllocationTable(props) {
       fetchAPI();
     },[])
   
+    
     
   
     async function fetchAPI(){
@@ -26,20 +30,19 @@ function AllocationTable(props) {
       settableContent(body)
       
     }
-    const navigation = useNavigate()
+   
   
-  function gotoform(){
-    navigation('/admin/allocate/form')
-  }
+  
+  
   
   
     
     return (
       <>
       <form className="form-search" method="get" action="#">
-            <input type="search" name="search" placeholder="I am looking for.."/>
+            <input type="search" name="search" placeholder="I am looking for.." />
             <button type="submit">Search</button>
-            <i class="fa fa-search"></i>
+            <i className="fa fa-search"></i>
     </form>
 
       
@@ -73,7 +76,9 @@ function AllocationTable(props) {
             <td data-column="Course">{row.ictak_course_handling}</td>
             <td data-column="Employment">{row.emptype}</td>
             <td data-column="">
-            <Button variant="contained" id='allocate' onClick={gotoform}>Allocate</Button>
+            <Button variant="contained" id='allocate' >
+              <Link to='/admin/allocate/form' element={<AllocationForm/>} id='form'>Allocate</Link>
+            </Button>
             
             </td>
         </tr>

@@ -25,6 +25,10 @@ th {
   display: block;
   margin-right: 5px;
 }
+#form {
+  text-decoration: none;
+  color: white;
+}
 
 /* 
 Max width before this PARTICULAR table gets nasty
@@ -95,12 +99,13 @@ and also iPads specifically.
   margin-bottom: 10px;
 
   font: bold 13px sans-serif;
-  max-width: 325px;
+  max-width: 425px;
   position: relative;
 }
 
 .form-search input {
-  width: 230px;
+  width: 250px;
+
   box-sizing: border-box;
   border-bottom-left-radius: 2px;
   border-top-left-radius: 2px;
