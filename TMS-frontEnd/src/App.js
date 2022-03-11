@@ -20,12 +20,13 @@ function App() {
         <Routes>
         <Route path="/" element={<Home/>} />
         <Route path='/login' element={<Login/>}/>
+        <Route path="/enroll" element={<CreateEnrollment/>} />
         <Route path='/trainer/:id' element={<TrainerProfile/>}/>
        
-        <Route path="/enroll" element={<CreateEnrollment/>} />
+        
         <Route path="/admin" element={<AdminHome/>}/>
         <Route path="/admin/allocate" element={<Allocate/>}/>
-        <Route path='/admin/allocate/form' element={<AllocationForm/>}/>
+        <Route path='/admin/allocate/:id' element={<AllocationForm/>}/>
         <Route path="/admin/view-allocations" element={<ViewAllocations/>}/>
         <Route path="*" element={<Error />} />
 

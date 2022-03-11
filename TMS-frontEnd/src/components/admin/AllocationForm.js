@@ -1,31 +1,85 @@
-import React from 'react';
+
+
+import React, { useEffect, useState } from 'react';
+import {useParams,useNavigate} from 'react-router-dom';
+
 import './form.css';
 
 
 function AllocationForm(props) {
+
+    const {id}=useParams()
+
+    const [formData,setFormData]=useState([])
+
+    const [allocate,setAllocate]=useState({courseid:'',batchid:'',startdate:'',enddate:'',starttime:'',endtime:'',venue:''})
     
+    const navigation = useNavigate()
+
+    useEffect(()=>{
+        fetchAPI();
+      },[])
     
+      const handleChange=(e)=>{
+        const {name,value}=e.target
+        setAllocate({...allocate,[name]:value})
+        
+      }
+      
+    
+      async function fetchAPI(){
+        const response=await fetch(`http://localhost:5001/api/admin/${id}`)
+        const body=await response.json()
+        console.log(body)
+        //setFormData(body)
+        const result=Object.values(body)[0]
+        setFormData(result)
+        
+      }
+  
+      async function handleSubmit(){
+          
+          const response=await fetch(`http://localhost:5001/api/admin/allocate/${id}`,{
+              method:'post',
+              body:JSON.stringify(allocate),
+              headers:{
+                  'Content-type':'application/json'
+              }
+          })
+          const result=await response.json()
+          //console.log(result)
+          alert(result.message)
+
+
+      }
   
        
         
     return (
         <>
+        
         <h2>Allocate Trainer</h2>
         
-        <form className="cbp-mc-form">
+        
+        
+        <form className="cbp-mc-form" onSubmit={(e)=>{
+            e.preventDefault()
+             handleSubmit()
+             }} >
+        
             
             <div className="cbp-mc-column">
                 <label htmlFor="id">Trainer ID</label>
-                <input type="text" id="id" name="id" value={''} disabled style={{backgroundColor:'rgb(115, 143, 143)'}}/>
+                <input type="text" id="id" name="id" value={formData._id} disabled style={{backgroundColor:'rgb(115, 143, 143)'}}/>
 
                 <label htmlFor="name">Trainer name</label>
-                <input type="text" id="name" name="name" value={''} disabled style={{backgroundColor:'rgb(115, 143, 143)'}}/>
+                <input type="text" id="name" name="name" value={formData.first_name+' '+formData.last_name} disabled style={{backgroundColor:'rgb(115, 143, 143)'}}/>
 
                 <label htmlFor="employment">Employed As</label>
-                <input type="text" id="employment" name="employment" value={''} disabled style={{backgroundColor:'rgb(115, 143, 143)'}}/>
+                <input type="text" id="employment" name="employment" value={formData.emptype} disabled style={{backgroundColor:'rgb(115, 143, 143)'}}/>
 
                 <label htmlFor="course">Course</label>
-                <input type="text" id="course" name="course" value={''} disabled style={{backgroundColor:'rgb(115, 143, 143)'}}/>
+                <input type="text" id="course" name="course" value={formData.ictak_course_handling} disabled style={{backgroundColor:'rgb(115, 143, 143)'}}/>
 
 
 
@@ -33,7 +87,7 @@ function AllocationForm(props) {
             </div>
             <div className="cbp-mc-column">
             <label htmlFor="courseid">Course ID</label>
-                <select id="courseid" name="courseid">
+                <select id="courseid" name="courseid" onChange={handleChange}>
                     <option>Choose course ID</option>
                     <option>01_DSA</option>
                     <option>02_FSD</option>
@@ -43,7 +97,7 @@ function AllocationForm(props) {
                 
 
                 <label htmlFor="batchid">Batch ID</label>
-                <select id="batchid" name="batchid">
+                <select id="batchid" name="batchid" onChange={handleChange}>
                     <option>Choose batch ID</option>
                     <option>DSA001</option>
                     <option>DSA002</option>
@@ -60,31 +114,37 @@ function AllocationForm(props) {
                 </select>
 
                 <label htmlFor="start">Start date</label>
-                <input type="date" id="start" name="start"  />
+                <input type="date" id="start" name="startdate" onChange={handleChange} />
 
                 <label htmlFor="end">End date</label>
-                <input type="date" id="end" name="end"  />
+                <input type="date" id="end" name="enddate" onChange={handleChange}  />
 
                 
 
                 
             </div>
             <div className="cbp-mc-column">
-                <label htmlFor="s-time">Start Time</label>
-                <input type="time" id="s-time" name="s-time"/>
+                <label htmlFor="s-time">Start Time(12 hour format)</label>
+                <input type='time' id="s-time" name="starttime" onChange={handleChange}/>
 
-                <label htmlFor="e-time">End Time</label>
-                <input type="time" id="e-time" name="e-time"/>
+                <label htmlFor="e-time">End Time(12 hour format)</label>
+                <input type="time" id="e-time" name="endtime" onChange={handleChange}/>
 
 
                 <label htmlFor="venue">Meeting/venue link</label>
-                <input type='url' id="venue" name="venue" />
+                <input type='text' id="venue" name="venue" onChange={handleChange}/>
 
-                <label htmlFor="block">block calender</label>
-                <input type='file' id="block" name="block" />
                 
             </div>
-            <div className="cbp-mc-submit-wrap"><input className="cbp-mc-submit" type="submit" value="Allocate" /></div>
+            <div>
+                <div className="cbp-mc-submit-wrap">
+                    <input className="cbp-mc-submit"  value="Allocate" type='submit'/>
+                    <input  className="cbp-mc-submit" value="Close" onClick={()=>navigation('/admin/allocate')}/>
+                </div>
+               
+
+            </div>
+            
         </form>
         </>
         

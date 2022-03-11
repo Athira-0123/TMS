@@ -31,11 +31,14 @@ var enrollments = new Schema({
     ictak_course_handling : String,
     isApproved:Boolean,
     emptype:String,
+    allocations:Array,
     image: {
         data: Buffer,
         contentType: String
     }
 },{timestamps:true});
+
+
 
         enrollments.methods.matchPassword = async function (enteredpassword) {
             try {

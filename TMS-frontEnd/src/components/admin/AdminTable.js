@@ -33,7 +33,7 @@ function AdminTable(props) {
   async function fetchAPI(){
     const response=await fetch(`http://localhost:5001/api/enrollments`)
     const body=await response.json()
-    console.log(body)
+    //console.log(body)
     
     settableContent(body)
     
@@ -110,7 +110,7 @@ function AdminTable(props) {
       <tbody>
         {tableContent.length===0?<p className='text-pending'>No pending requests</p>:
         tableContent.map((row,key)=>
-          <tr>
+          <tr key={key}>
             <td data-column="Name">{row.first_name} {row.last_name}</td>
             <td data-column="Email">{row.email_address}</td>
             <td data-column="Phone">{row.phone}</td>

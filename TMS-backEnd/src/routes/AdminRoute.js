@@ -55,6 +55,66 @@ function approvemail(id){
 }
 
 
+//allocation mail
+function allocatemail(id,data){
+
+  enrollment_data.findOne({"_id":id})
+    
+
+ .then((profile)=>{
+
+  var transporter = nodemailer.createTransport({
+    service: 'gmail',
+    host:'smtp.gmail,com',
+    secure:true,
+    auth: {
+           user: 'tmsa36467@gmail.com',
+           pass: 'fsdnorka2021b3'
+       },
+       tls:{
+           rejectUnauthorized: false
+         }
+   })
+  
+  
+  var mailOptions = {
+    from: '	tmsa36467@gmail.com',
+    to: profile.email_address,
+    subject: 'Course Assigned-'+ profile.first_name,
+    html:`<h2>New Course Added By Admin</h2>
+    
+    <p>Hello <b>${profile.first_name+" "+profile.last_name}</b>, New Course is assigned in your profile.Login into your Profile and check it </p>
+    <ul>
+    <li>BatchID : ${data.batchid}</li> 
+    <li>CourseID : ${data.courseid}</li> 
+    <li>StartDate : ${data.startdate}</li> 
+    <li>EndDate :  ${data.enddate} </p> 
+    <li>ScheduleTime :  ${data.starttime+'-'+data.endtime}</li> 
+    <li>Venue :  ${data.venue} </li> 
+    </ul> 
+    <p>If you are facing any issues ,kindly contact the administrator</p>`
+
+    
+    
+    
+
+  };
+  
+  transporter.sendMail(mailOptions, function(error, info){
+    if (error) {
+      console.log('Email not sent.Check again');
+
+                    
+    } else {       
+      console.log('Email sent');
+    }
+   
+  });
+ 
+ });
+}
+
+
 
 // approve
 adminRouter.put('/approve',(req,res)=>{   
@@ -94,7 +154,9 @@ adminRouter.delete('/deleteData',function(req,res){
     })
   })
 
-adminRouter.get('/allocationtable',(req,res)=>{
+adminRouter.get('/table',(req,res)=>{
+  res.header("Access-Control-Allow-Origin", "*");
+  res.header("Access-Control-Allow-Methods: GET, POST, PUT, DELETE");
   enrollment_data.find({isApproved:true})
   .then(function (enrollments) {
     res.status(200).json(enrollments);
@@ -103,7 +165,71 @@ adminRouter.get('/allocationtable',(req,res)=>{
   })
 })
 
+adminRouter.get(`/:id`,(req,res)=>{
+  res.header("Access-Control-Allow-Origin", "*");
+  res.header("Access-Control-Allow-Methods: GET, POST, PUT, DELETE");
+  const id=req.params.id
+  enrollment_data.find({_id:id})
+  .then(function(article){
+    res.json(article)
+  })
+})
+
+adminRouter.post('/allocate/:id', (req, res) => {
+  res.header("Access-Control-Allow-Origin", "*");
+  res.header("Access-Control-Allow-Methods: GET, POST, PUT, DELETE");
+  
+    const id = req.params.id;
+    
+    const data=req.body
+    
+    enrollment_data.find({_id:id})
+      .then(function(trainer){
+        const results=trainer[0].allocations
+        if(results.length==0){
+          const filter = { _id: id };
+          const update = { $push: { allocations: data} };
+          enrollment_data.findOneAndUpdate(filter, update, { new: true })
+            .then(function (article) {
+              allocatemail(id,data)
+                res.json({message:'Work allocated and email sent',data:article});
+              })
+
+        }
+          results.forEach(result => {
+            if(result.startdate==data.startdate&&result.starttime==data.starttime){
+              res.json({message:'Work already allocated for this period'})
+            }else{
+              const filter = { _id: id };
+              const update = { $push: { allocations:data} };
+              enrollment_data.findOneAndUpdate(filter, update, { new: true })
+                .then(function (article) {
+                  allocatemail(id,data)
+                    res.json({message:'Work allocated and email sent',data:article});
+                  })
+              
+            }
+          });
+        
+      
+
+      })
+    
+  
+  
+
+  
+})
+
+adminRouter.get('/view',(req,res)=>{
+  res.header("Access-Control-Allow-Origin", "*");
+  res.header("Access-Control-Allow-Methods: GET, POST, PUT, DELETE");
+  enrollment_data.find({isApproved:true})
+  .then(function(article){
+    res.json(article)
+  })
+})
+
 
 module.exports = adminRouter;
 
-//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

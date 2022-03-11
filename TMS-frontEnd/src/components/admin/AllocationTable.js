@@ -9,12 +9,8 @@ import './allocations.css'
 
 function AllocationTable(props) {
     const [tableContent, settableContent] = useState([])
+
    
-    
-      
-  
-    
-  
     useEffect(()=>{
       fetchAPI();
     },[])
@@ -23,30 +19,19 @@ function AllocationTable(props) {
     
   
     async function fetchAPI(){
-      const response=await fetch(`http://localhost:5001/api/admin/allocationtable`)
+      const response=await fetch(`http://localhost:5001/api/admin/table`)
       const body=await response.json()
-      console.log(body)
+      //console.log(body)
       
       settableContent(body)
       
     }
-   
-  
-  
-  
-  
-  
+
+    
+
     
     return (
       <>
-      <form className="form-search" method="get" action="#">
-            <input type="search" name="search" placeholder="I am looking for.." />
-            <button type="submit">Search</button>
-            <i className="fa fa-search"></i>
-    </form>
-
-      
-      
       
       <table>
       <thead>
@@ -65,7 +50,7 @@ function AllocationTable(props) {
       </thead>
       <tbody>
         {tableContent.map((row,key)=>
-          <tr>
+          <tr key={key}>
             <td data-column="Name">{row.first_name} {row.last_name}</td>
             <td data-column="Email">{row.email_address}</td>
             <td data-column="Phone">{row.phone}</td>
@@ -77,7 +62,7 @@ function AllocationTable(props) {
             <td data-column="Employment">{row.emptype}</td>
             <td data-column="">
             <Button variant="contained" id='allocate' >
-              <Link to='/admin/allocate/form' element={<AllocationForm/>} id='form'>Allocate</Link>
+              <Link to={`/admin/allocate/${row._id}`} element={<AllocationForm />} id='form'>Allocate</Link>
             </Button>
             
             </td>

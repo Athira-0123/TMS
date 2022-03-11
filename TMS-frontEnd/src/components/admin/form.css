@@ -11,9 +11,10 @@
   content: " ";
   display: table;
 }
+
 h2 {
   background-color: teal;
-  color: white;
+  color: whitesmoke;
   font-family: "Courier New", Courier, monospace;
   font-size: 48px;
   font-weight: 500;
@@ -37,7 +38,7 @@ h2 {
   text-transform: uppercase;
   letter-spacing: 1px;
   cursor: pointer;
-  color: white;
+  color: whitesmoke;
 }
 
 .cbp-mc-form input,
@@ -47,7 +48,7 @@ h2 {
   line-height: 1.5;
   font-size: 1.4em;
   padding: 5px 10px;
-  color: white;
+  color: whitesmoke;
   display: block;
   width: 100%;
   background: transparent;
@@ -55,7 +56,7 @@ h2 {
 
 .cbp-mc-form input,
 .cbp-mc-form textarea {
-  border: 1px solid white;
+  border: 1px solid whitesmoke;
 }
 
 .cbp-mc-form textarea {
@@ -67,7 +68,7 @@ h2 {
 .cbp-mc-form label:active + input,
 .cbp-mc-form label:active + textarea {
   outline: none;
-  border: 3px solid white;
+  border: 3px solid whitesmoke;
 }
 
 .cbp-mc-form select:focus {
@@ -76,25 +77,25 @@ h2 {
 
 ::-webkit-input-placeholder {
   /* WebKit browsers */
-  color: white;
+  color: whitesmoke;
   font-style: italic;
 }
 
 :-moz-placeholder {
   /* Mozilla Firefox 4 to 18 */
-  color: white;
+  color: whitesmoke;
   font-style: italic;
 }
 
 ::-moz-placeholder {
   /* Mozilla Firefox 19+ */
-  color: white;
+  color: whitesmoke;
   font-style: italic;
 }
 
 :-ms-input-placeholder {
   /* Internet Explorer 10+ */
-  color: white;
+  color: whitesmoke;
   font-style: italic;
 }
 
@@ -105,10 +106,10 @@ h2 {
 }
 
 .cbp-mc-form input.cbp-mc-submit {
-  background: white;
+  background: whitesmoke;
   border: none;
   color: black;
-  width: auto;
+  width: 150px;
   cursor: pointer;
   text-transform: uppercase;
   display: inline-block;
@@ -116,6 +117,8 @@ h2 {
   font-size: 1.1em;
   border-radius: 2px;
   letter-spacing: 1px;
+  margin-right: 20px;
+  margin-bottom: 10px;
 }
 
 .cbp-mc-form input.cbp-mc-submit:hover {
