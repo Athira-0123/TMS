@@ -6,7 +6,6 @@ import MenuItem from '@mui/material/MenuItem';
 import FormControl from '@mui/material/FormControl';
 import Select from '@mui/material/Select';
 import Button  from '@mui/material/Button';
-import { Table,TableContainer,Paper,TableCell,TableRow,TableHead,TableBody, Container } from '@mui/material';
 
 
 
@@ -88,76 +87,77 @@ function AdminTable(props) {
 
   
   return (
+    <>
     
-    <div className='container'>
-    <TableContainer component={Paper}  >
-      <Table sx={{ minWidth: 650 }} aria-label="a dense table" className='table'>
-        <TableHead >
-          <TableRow  className='thead'>
-            <TableCell id='id' align="right">Name</TableCell>
-            <TableCell id='id' align="right">Email</TableCell>
-            <TableCell id='id' align="right">Phone</TableCell>
-            <TableCell id='id' align="right">Qualification</TableCell>
-            <TableCell id='id' align="right">Skills</TableCell>
-            <TableCell id='id' align="right">Current Company</TableCell>
-            <TableCell id='id' align="right">Designation</TableCell>
-            <TableCell id='id' align="right">Course</TableCell>
-            <TableCell id='id' align="right">Employment</TableCell>
-            <TableCell id='id' align="right"></TableCell>
-          </TableRow>
-        </TableHead>
-        <TableBody className='tbody'>
-          {tableContent.length===0?<p className='text-pending'>No pending requests</p>:
-          tableContent.map((row,key) => (
-            
-            <TableRow key={row.name} className='tablerow' sx={{ '&:last-child td, &:last-child th': { border: 0 } }}>
-              
-              <TableCell id='id_name' align="right">{row.first_name} {row.last_name}</TableCell>
-              <TableCell id='id_person' align="right">{row.email_address}</TableCell>
-              <TableCell id='id_person' align="right">{row.phone}</TableCell>
-              <TableCell id='id_person' align="right">{row.highest_qualification}</TableCell>
-              <TableCell id='id_person' align="right">{row.skill_set}</TableCell>
-              <TableCell id='id_person' align="right">{row.current_company_name}</TableCell>
-              <TableCell id='id_person' align="right">{row.current_designation}</TableCell>
-              <TableCell id='id_person' align="right">{row.ictak_course_handling}</TableCell>
-              <TableCell id='id_person' align="right">
-                  <FormControl required sx={{ m:1,minWidth: 160 }}>
+    
+    
+      <table className='table'>
+      
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>Email</th>
+          <th>Phone</th>
+          <th>Qualification</th>
+          <th>Skills</th>
+          <th>Current Company</th>
+          <th>Designation</th>
+          <th>Course</th>
+          <th>Employment</th>
+          <th></th>
+        </tr>
+      </thead>
+      <tbody>
+        {tableContent.length===0?<p className='text-pending'>No pending requests</p>:
+        tableContent.map((row,key)=>
+          <tr>
+            <td data-column="Name">{row.first_name} {row.last_name}</td>
+            <td data-column="Email">{row.email_address}</td>
+            <td data-column="Phone">{row.phone}</td>
+            <td data-column="Qualification">{row.highest_qualification}</td>
+            <td data-column="Skills">{row.skill_set}</td>
+            <td data-column="Curent Company">{row.current_company_name}</td>
+            <td data-column="Designation">{row.current_designation}</td>
+            <td data-column="Course">{row.ictak_course_handling}</td>
+            <td data-column="Employment">
+            <FormControl required sx={{ m:1,minWidth: 160 }} size='small'>
                   
-                    <Select
-                      labelId="demo-simple-select-required-label"
-                      id="demo-simple-select-required"
-                      label="Employment *"
-                      className='select'
-                      style={{fontSize:'16px'}}
-                      defaultValue={'none'}
-                      onChange={handleChange}
-                      
-                    >
-                      <MenuItem value='none'>None</MenuItem>
-                      <MenuItem value='Internal'>Internal</MenuItem>
-                      <MenuItem value='Empanelled'>Empanelled</MenuItem>
-                      <MenuItem value='Industry Expert'>Industry Expert</MenuItem>
-                    </Select>
+                  <Select
+                    labelId="demo-simple-select-required-label"
+                    id="demo-simple-select-required"
+                    label="Employment *"
+                    className='select'
+                    style={{fontSize:'16px'}}
+                    defaultValue={'none'}
+                    onChange={handleChange}
                     
-                  </FormControl>
-              </TableCell>
-              <TableCell  id='id_person' align="right">
+                  >
+                    <MenuItem value='none'>None</MenuItem>
+                    <MenuItem value='Internal'>Internal</MenuItem>
+                    <MenuItem value='Empanelled'>Empanelled</MenuItem>
+                    <MenuItem value='Industry Expert'>Industry Expert</MenuItem>
+                  </Select>
+                  
+                </FormControl>
+            </td>
+            <td data-column="">
                 <Button variant="outlined" id='approve' onClick={approveTrainer}>Approve</Button>
                 <Button variant="outlined" id='reject' onClick={deleteData}>Reject</Button>
-                
             
-              </TableCell>
-            </TableRow>
-          ))}
-        </TableBody>
-      </Table>
-    </TableContainer>
+            </td>
+        </tr>
+        )}
+        
+        
+      </tbody>
+    </table>
+
+      
+    </>
     
-    
-  </div>
+  
     
   );
 }
 
 export default AdminTable;
-
