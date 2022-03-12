@@ -3,34 +3,10 @@ const accountsRouter = express.Router();
 const enrollment_data = require("../model/EnrollmentModel");
 const jwt = require("jsonwebtoken");
 const cors = require("cors");
-// accountsRouter.use(cors());
 
-/*accountsRouter.post("/signup", async (req, res) => {
-    
-    try {
-        
-        var item = {
-            username: req.body.username,
-            password: req.body.password,
-            isadmin: false
-        }
-        if (item.username !== "" && item.password !== "") {
-            user = await UserInfo.findOne({ $or: [{ username: item.username }] });
-            if (user) throw new Error("User already exists.");
-            const userAccount = new UserInfo(item);
-            userAccount.save()
-                .then(() => res.json({ status: "Success" }))
-                .catch((er) => {
-                    console.log(er)
-                    res.sendStatus(500).json({ status: "Error" });
-                });
-        } else {
-            res.json({ status: "Error", message: "Invalid inputs" });
-        }} catch (error) {
-        res.json({ status: "Error", message: error.message });
-    }
-   
-})*/
+
+
+//api to login successfully
 
 accountsRouter.post("/login", async (req, res) => {
     res.header("Access-Control-Allow-Origin", "*");

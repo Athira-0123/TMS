@@ -7,7 +7,7 @@ import validateLogin from './validateLogin';
 
 
 
-import './login.css';
+import '../enrollment/Enrollment.css';
 
 function Login() {
     // Storing Form Values
@@ -94,8 +94,9 @@ function Login() {
                     <button className='alink' type='submit' value="Submit application"> Submit </button>
                 </div>
                 <br/>
-                <Link to='/enroll' className='next'>Not enrolled?SignUp</Link>
                 
+                <Link to='/enroll' className='next'>Not enrolled?SignUp</Link><br/><br/>
+                <Link to='/' className='next'>Go back to home</Link>
             
                 </form>
             

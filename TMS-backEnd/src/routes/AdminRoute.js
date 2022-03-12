@@ -3,6 +3,9 @@ const adminRouter = express.Router();
 const enrollment_data = require("../model/EnrollmentModel");
 const nodemailer=require('nodemailer')
 
+
+//function to send approval mail to trainer
+
 function approvemail(id){
     enrollment_data.findOne({"_id":id})
       
@@ -115,8 +118,7 @@ function allocatemail(id,data){
 }
 
 
-
-// approve
+// api to approve trainer
 adminRouter.put('/approve',(req,res)=>{   
     try {
       const email=req.body.email;
@@ -141,7 +143,7 @@ adminRouter.put('/approve',(req,res)=>{
     
 })
 
-//reject trainer
+//api to reject trainer
 
 adminRouter.delete('/deleteData',function(req,res){
     res.header("Access-Control-Allow-Origin", "*");
@@ -154,6 +156,8 @@ adminRouter.delete('/deleteData',function(req,res){
     })
   })
 
+  //api to get allocation table populated
+
 adminRouter.get('/table',(req,res)=>{
   res.header("Access-Control-Allow-Origin", "*");
   res.header("Access-Control-Allow-Methods: GET, POST, PUT, DELETE");
@@ -165,16 +169,21 @@ adminRouter.get('/table',(req,res)=>{
   })
 })
 
+
+//api to get trainer allocation form prefilled
+
 adminRouter.get(`/:id`,(req,res)=>{
   res.header("Access-Control-Allow-Origin", "*");
   res.header("Access-Control-Allow-Methods: GET, POST, PUT, DELETE");
   const id=req.params.id
-  enrollment_data.find({_id:id})
+  enrollment_data.find({ _id:id })
   .then(function(article){
     res.json(article)
   })
 })
 
+
+//api to post allocation data to database
 adminRouter.post('/allocate/:id', (req, res) => {
   res.header("Access-Control-Allow-Origin", "*");
   res.header("Access-Control-Allow-Methods: GET, POST, PUT, DELETE");
@@ -210,23 +219,21 @@ adminRouter.post('/allocate/:id', (req, res) => {
               
             }
           });
-        
       
-
       })
-    
-  
   
 
   
 })
 
-adminRouter.get('/view',(req,res)=>{
+//api to view all allocations
+
+adminRouter.get('/viewalloocation',(req,res)=>{
   res.header("Access-Control-Allow-Origin", "*");
   res.header("Access-Control-Allow-Methods: GET, POST, PUT, DELETE");
   enrollment_data.find({isApproved:true})
-  .then(function(article){
-    res.json(article)
+  .then(function(body){
+    res.json(body)
   })
 })
 

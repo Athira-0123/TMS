@@ -246,7 +246,8 @@ function CreateEnrollment(props) {
           
           <button className='alink' type='submit' value="Submit application"> Submit </button>
           <br/>
-          <Link to='/login' className='next'>Already enrolled?Login</Link>
+          <Link to='/login' className='next'>Already enrolled?Login</Link><br/><br/>
+          <Link to='/' className='next'>Go back to home</Link>
         </div>
 				</form>
 			</div>

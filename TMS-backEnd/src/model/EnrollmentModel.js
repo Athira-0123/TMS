@@ -39,6 +39,7 @@ var enrollments = new Schema({
 },{timestamps:true});
 
 
+        //to compare login password
 
         enrollments.methods.matchPassword = async function (enteredpassword) {
             try {
