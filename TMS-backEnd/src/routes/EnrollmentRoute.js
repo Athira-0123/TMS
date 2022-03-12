@@ -22,6 +22,8 @@ var storage = multer.diskStorage({
   
 var upload = multer({ storage: storage });
 
+//api to populate admin request table
+
 enrollmentRouter.get('/',function(req,res){
 
   enrollment_data.find({isApproved:false})
@@ -31,20 +33,11 @@ enrollmentRouter.get('/',function(req,res){
 
   })
 })
-enrollmentRouter.get('/:id', (req, res) => {
-  res.header("Access-Control-Allow-Origin", "*");
-  res.header("Access-Control-Allow-Methods: GET, POST, PUT, DELETE");
-  try {
-      const enrollmentId = req.params.id;
-      enrollment_data.findOne({ id: enrollmentId })
-          .then(function (enrollment) {
-              res.status(200).json(enrollment);
-          })
-  }
-  catch (error) {
-      res.status(500).json({ message: 'Error', error });
-  }
-});
+
+
+
+
+//api to post enrollment data
 
 enrollmentRouter.post("/",  upload.single('image') ,(req, res, next) => {
   res.header("Access-Control-Allow-Origin", "*");
@@ -89,6 +82,24 @@ enrollmentRouter.post("/",  upload.single('image') ,(req, res, next) => {
   
 });
 
+/*
+
+
+enrollmentRouter.get('/:id', (req, res) => {
+  res.header("Access-Control-Allow-Origin", "*");
+  res.header("Access-Control-Allow-Methods: GET, POST, PUT, DELETE");
+  try {
+      const enrollmentId = req.params.id;
+      enrollment_data.findOne({ id: enrollmentId })
+          .then(function (enrollment) {
+              res.status(200).json(enrollment);
+          })
+  }
+  catch (error) {
+      res.status(500).json({ message: 'Error', error });
+  }
+});
+
 enrollmentRouter.put("/:id", upload.single('image') , function (req, res) {
   enrollment_data.findByIdAndUpdate(req.params.id, { $set: req.body },  { new: true },function (err, data) {
 
@@ -122,6 +133,6 @@ enrollmentRouter.delete("/", function (req, res) {
   })  
 
 });
-
+*/
 
 module.exports = enrollmentRouter;

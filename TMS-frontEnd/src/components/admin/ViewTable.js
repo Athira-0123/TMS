@@ -1,43 +1,27 @@
-import format from "date-fns/format";
-import getDay from "date-fns/getDay";
-import parse from "date-fns/parse";
-import startOfWeek from "date-fns/startOfWeek";
-import React, { useState } from "react";
-import { Calendar, dateFnsLocalizer } from "react-big-calendar";
-import "react-big-calendar/lib/css/react-big-calendar.css";
-import DatePicker from "react-datepicker";
-import "react-datepicker/dist/react-datepicker.css";
+import React, { useEffect } from 'react';
 
+function ViewTable(props) {
 
-const locales = {
-    "en-US": require("date-fns/locale/en-US"),
-};
-const localizer = dateFnsLocalizer({
-    format,
-    parse,
-    startOfWeek,
-    getDay,
-    locales,
-});
+  useEffect(()=>{
+    fetchAPI();
+  },[])
 
-const events = [
-];
+  
 
-function ViewTable() {
-    const [newEvent, setNewEvent] = useState({ title: "", start: "", end: "" });
-    const [allEvents, setAllEvents] = useState(events);
+  async function fetchAPI(){
+    const response=await fetch(`http://localhost:5001/api/admin/table`)
+    const body=await response.json()
+    console.log(body)
+    
+    
+  }
 
-    function handleAddEvent() {
-        setAllEvents([...allEvents, newEvent]);
-    }
-
-    return (
-        <div >
-            <h1>Calendar</h1>
-            
-            <Calendar localizer={localizer} events={allEvents} startAccessor="start" endAccessor="end" style={{ height: 500, margin: "50px" }} />
-        </div>
-    );
+  
+  return (
+    <div>
+      
+    </div>
+  );
 }
 
 export default ViewTable;
