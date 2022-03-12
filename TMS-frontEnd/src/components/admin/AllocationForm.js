@@ -87,30 +87,30 @@ function AllocationForm(props) {
             </div>
             <div className="cbp-mc-column">
             <label htmlFor="courseid">Course ID</label>
-                <select id="courseid" name="courseid" onChange={handleChange}>
-                    <option>Choose course ID</option>
-                    <option>01_DSA</option>
-                    <option>02_FSD</option>
-                    <option>03_RPA</option>
-                    <option>04_CSA</option>
+                <select  id="courseid" name="courseid" onChange={handleChange}>
+                    <option className="courseselect">Choose course ID</option>
+                    <option className="courseselect">01_DSA</option>
+                    <option className="courseselect">02_FSD</option>
+                    <option className="courseselect">03_RPA</option>
+                    <option className="courseselect">04_CSA</option>
                 </select>
                 
 
                 <label htmlFor="batchid">Batch ID</label>
                 <select id="batchid" name="batchid" onChange={handleChange}>
-                    <option>Choose batch ID</option>
-                    <option>DSA001</option>
-                    <option>DSA002</option>
-                    <option>DSA003</option>
-                    <option>FSD001</option>
-                    <option>FSD002</option>
-                    <option>FSD003</option>
-                    <option>CSA001</option>
-                    <option>CSA002</option>
-                    <option>CSA003</option>
-                    <option>RPA001</option>
-                    <option>RPA002</option>
-                    <option>RPA003</option>
+                    <option className="courseselect">Choose batch ID</option>
+                    <option className="courseselect">DSA001</option>
+                    <option className="courseselect">DSA002</option>
+                    <option className="courseselect">DSA003</option>
+                    <option className="courseselect">FSD001</option>
+                    <option className="courseselect">FSD002</option>
+                    <option className="courseselect">FSD003</option>
+                    <option className="courseselect">CSA001</option>
+                    <option className="courseselect">CSA002</option>
+                    <option className="courseselect">CSA003</option>
+                    <option className="courseselect">RPA001</option>
+                    <option className="courseselect">RPA002</option>
+                    <option className="courseselect">RPA003</option>
                 </select>
 
                 <label htmlFor="start">Start date</label>
@@ -124,10 +124,10 @@ function AllocationForm(props) {
                 
             </div>
             <div className="cbp-mc-column">
-                <label htmlFor="s-time">Start Time(12 hour format)</label>
+                <label htmlFor="s-time">Start Time</label>
                 <input type='time' id="s-time" name="starttime" onChange={handleChange}/>
 
-                <label htmlFor="e-time">End Time(12 hour format)</label>
+                <label htmlFor="e-time">End Time</label>
                 <input type="time" id="e-time" name="endtime" onChange={handleChange}/>
 
 
