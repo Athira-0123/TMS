@@ -81,11 +81,12 @@ function CreateEnrollment(props) {
     return (
 
         <>
+        <div className="bg">
        <div className="wrapper">
 			<div className="inner" >
 				<form onSubmit={handleSubmit}>
 					<h3>Enrollment</h3>
-					<p>Please fill below details to enroll as a trainer</p>
+					<p>Please fill your details to enroll as a trainer</p>
 
           <label className="form-group">
 						<input type="text" className="form-control"  name="first_name"  value={enrollmentValues.first_name} onChange={handleChange}/>
@@ -232,12 +233,12 @@ function CreateEnrollment(props) {
          
          
         {/* <fieldset> */}
-        <label className="form-group">
+        <label className="form-group1">
         <input type="file"  id="imageInput"  className="form-control" name="image" accept=".jpg,.png" required />
         
 						<span>    Photo *</span>
             
-            <p>Possible file types: JPG,PNG. Maximum file size: 10 MB.</p>
+            <small>Possible file types: JPG,PNG. Maximum file size: 10 MB.</small>
             
             <span className="border"></span>
 					</label>
@@ -246,12 +247,13 @@ function CreateEnrollment(props) {
           
           <button className='alink' type='submit' value="Submit application"> Submit </button>
           <br/>
-          <Link to='/login' className='next'>Already enrolled?Login</Link><br/><br/>
+          Already enrolled?<Link to='/login' className='next'> Click Here</Link><br/><br/>
           <Link to='/' className='next'>Go back to home</Link>
         </div>
 				</form>
 			</div>
 		</div>
+    </div>
         </>
     );
 }

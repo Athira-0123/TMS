@@ -18,7 +18,7 @@
 
 body {
   font-family: "Montserrat-Regular";
-  color: #fff;
+  color: rgb(255, 255, 255);
   font-size: 15px;
   margin: 0;
 }
@@ -42,7 +42,10 @@ h6,
 ul {
   margin: 0;
 }
-
+h3{
+  margin-top: -20px;
+ 
+}
 img {
   max-width: 100%;
 }
@@ -60,19 +63,22 @@ a:hover {
   outline: none;
 }
 
+.bg{
+  background-image: url(https://img.freepik.com/free-photo/abstract-blur-empty-green-gradient-studio-well-use-as-background-website-template-frame-business-report_1258-54629.jpg?size=338&ext=jpg);
+}
 .wrapper {
   min-height: 100vh;
-  display: flex;
+  display:flex ;
   align-items: center;
 }
 
 .inner {
   max-width: 758px;
-  margin: 50px auto;
-  background: rgb(27, 109, 27);
-  border: 10px solid #0dd76b;
+  margin: 100px auto;
+  background: transparent;
+  border: 10px solid #167c46;
   padding: 77px 99px 87px;
-  border-radius: 40px;
+  border-radius: 0px;
   box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.2);
   -webkit-box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.2);
   -moz-box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.2);
@@ -101,20 +107,21 @@ p {
 
 .form-group {
   position: relative;
-  display: block;
+  display:flex;
   margin-bottom: 48px;
 }
+
 .form-group span {
-  font-size: 15px;
-  color: #caffe3;
-  position: absolute;
-  top: 11px;
+  font-size: 20px;
+  color: #77e7ab;
+  position:absolute;
+  top: 0px;
   transition: all 0.2s ease;
   transform-origin: 0 0;
   cursor: text;
 }
 .form-group span.border {
-  height: 2px;
+  height: 1px;
   display: block;
   position: absolute;
   width: 100%;
@@ -122,7 +129,33 @@ p {
   top: 41px;
   transform: scaleX(0);
   transition: all 0.15s ease;
-  background: #fff;
+  background: rgb(247, 241, 241);
+}
+.form-group1 {
+  position: relative;
+  display:flex;
+  margin-bottom: 48px;
+}
+
+.form-group1 span {
+  font-size: 20px;
+  color: #77e7ab;
+  position:absolute;
+  top: -25px;
+  transition: all 0.2s ease;
+  transform-origin: 0 0;
+  cursor: text;
+}
+.form-group1 span.border {
+  height: 1px;
+  display: block;
+  position: absolute;
+  width: 100%;
+  left: 0;
+  top: 41px;
+  transform: scaleX(0);
+  transition: all 0.15s ease;
+  background: rgb(247, 241, 241);
 }
 
 .form-control {
@@ -252,7 +285,7 @@ textarea.form-control {
 }
 
 .course_selection {
-  background-color: rgb(27, 109, 27);
+  background-color: rgb(5, 51, 26);
 }
 .error {
   color: white;

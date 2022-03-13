@@ -20,7 +20,7 @@ const HeroSection = () => {
             <VideoBg autoPlay loop muted src={Video} type='Video/mp4' />
         </HeroBg>
         <HeroContent>
-            <HeroH1>Welcome to ICT Academy</HeroH1>
+            <HeroH1>Welcome to ICT Academy of Kerala</HeroH1>
             <HeroP>
                 Enroll as a Trainer today itself, Lets start our journey together...
             </HeroP>

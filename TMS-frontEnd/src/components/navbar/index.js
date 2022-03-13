@@ -44,7 +44,7 @@ const Navbar = ({toggle}) =>{
                   exact='true'
                   offset={-80}
                   
-                    >Home</NavLinks>
+                    >Explore</NavLinks>
               </NavItem>
               <NavItem>
                 <NavLinks to="about"
@@ -67,6 +67,9 @@ const Navbar = ({toggle}) =>{
               {/* <NavItem>
                 <NavLinks to="enroll">Enroll</NavLinks>
               </NavItem> */}
+          <NavBtn>
+            <NavBtnLink to='/'>Home</NavBtnLink>
+          </NavBtn>
           <NavBtn>
             <NavBtnLink to='/enroll'>Enroll</NavBtnLink>
           </NavBtn>

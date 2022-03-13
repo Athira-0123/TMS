@@ -72,11 +72,11 @@ function Login() {
 
 
     return (
-
+        <div className='bg'>
         <div className='wrapper' >
             
                 <form onSubmit={handleSubmit} className='inner'>
-                <h3 >Login</h3> <br/>
+                <h3 >Login</h3> <br/><br/>
                 <label className="form-group">
                     <input type="email" name='username'  className="form-control" required="" value={formValues.username} onChange={handleChange} />
 					<span>   Email address *</span>
@@ -99,7 +99,7 @@ function Login() {
                 <Link to='/' className='next'>Go back to home</Link>
             
                 </form>
-            
+                </div>
         </div>
     );
 }
