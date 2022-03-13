@@ -58,7 +58,7 @@ function AllocationForm(props) {
     return (
         <>
         
-        <h2>Allocate Trainer</h2>
+        <h2>ALLOCATE TRAINER</h2>
         
         
         
