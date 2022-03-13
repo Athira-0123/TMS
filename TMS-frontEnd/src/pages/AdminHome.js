@@ -1,7 +1,7 @@
 import React from 'react';
 import '@fontsource/roboto/300.css';
 import AdminTable from '../components/admin/AdminTable';
-import Footer from '../components/footer/Footer';
+import Footer from '../components/footer';
 import AdminNav from '../components/navbar/AdminNav';
 
 
