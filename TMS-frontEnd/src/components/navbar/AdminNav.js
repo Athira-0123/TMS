@@ -135,7 +135,7 @@ export default function AdminNav() {
             <Link id='list' to='/admin/allocate'><ScheduleIcon id='linklogo'/><div id='link'>Allocate</div></Link>
           </ListItem>
           <ListItem className='listitem'>
-            <Link id='list' to='/admin/view-allocations'><TableViewIcon id='linklogo'/><div id='link'>View allocations</div></Link>
+            <Link id='list' to='/admin/view-allocations'><TableViewIcon id='linklogo'/><div id='link'>View Allocations</div></Link>
           </ListItem>
           <ListItem className='listitem'>
             <Link id='list' to='/'><LogoutIcon id='linklogo'/><div id='link'>Logout</div></Link>

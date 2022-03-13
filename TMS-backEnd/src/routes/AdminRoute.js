@@ -201,7 +201,8 @@ adminRouter.post('/allocate/:id', (req, res) => {
           enrollment_data.findOneAndUpdate(filter, update, { new: true })
             .then(function (article) {
               allocatemail(id,data)
-                res.json({message:'Work allocated and email sent',data:article});
+              console.log('allocation mail sent')
+                res.json({message:'Work allocated and email sent'});
               })
 
         }
@@ -214,7 +215,8 @@ adminRouter.post('/allocate/:id', (req, res) => {
               enrollment_data.findOneAndUpdate(filter, update, { new: true })
                 .then(function (article) {
                   allocatemail(id,data)
-                    res.json({message:'Work allocated and email sent',data:article});
+                  console.log('allocation mail sent')
+                    res.json({message:'Work allocated and email sent'});
                   })
               
             }
