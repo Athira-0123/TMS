@@ -1,9 +1,12 @@
-const mongoose = require('mongoose');
-mongoose.connect('mongodb+srv://userone:userone@fsdfiles.ltrsv.mongodb.net/tms?retryWrites=true&w=majority');
+const mongoose = require("mongoose");
+mongoose.connect(
+  "mongodb+srv://userone:userone@fsdfiles.ltrsv.mongodb.net/tms?retryWrites=true&w=majority"
+);
 const Schema = mongoose.Schema;
-const bcrypt = require('bcrypt');
+const bcrypt = require("bcrypt");
 
-var enrollments = new Schema({
+var enrollments = new Schema(
+  {
     first_name: String,
     last_name: String,
     gender: String,
@@ -14,42 +17,43 @@ var enrollments = new Schema({
     district: String,
     state: String,
     zip_Code: String,
-    phone : String,
-    email_address :{
-        type:String,
-        required:true,
+    phone: String,
+    email_address: {
+      type: String,
+      required: true,
     },
-    password:{
-        type:String,
-        required:true,
+    password: {
+      type: String,
+      required: true,
     },
-    confirmpassword:String,
-    highest_qualification : String,
-    skill_set : String,
-    current_company_name : String,
-    current_designation : String,
-    ictak_course_handling : String,
-    isApproved:Boolean,
-    emptype:String,
-    allocations:Array,
+    confirmpassword: String,
+    highest_qualification: String,
+    skill_set: String,
+    current_company_name: String,
+    current_designation: String,
+    ictak_course_handling: String,
+    isApproved: Boolean,
+    emptype: String,
+    allocations: Array,
     image: {
-        data: Buffer,
-        contentType: String
-    }
-},{timestamps:true});
+      data: Buffer,
+      contentType: String,
+    },
+  },
+  { timestamps: true }
+);
 
+//to compare login password
 
-        //to compare login password
+enrollments.methods.matchPassword = async function (enteredpassword) {
+  try {
+    return await bcrypt.compareSync(enteredpassword, this.password);
+  } catch (error) {
+    throw error;
+    //console.log('error')
+  }
+};
 
-        enrollments.methods.matchPassword = async function (enteredpassword) {
-            try {
-            return await bcrypt.compareSync(enteredpassword, this.password)
-            } catch (error) {
-            throw error
-            //console.log('error')
-            }
-            }
-
-var enrollments = mongoose.model('enrollments', enrollments);
+var enrollments = mongoose.model("enrollments", enrollments);
 
 module.exports = enrollments;

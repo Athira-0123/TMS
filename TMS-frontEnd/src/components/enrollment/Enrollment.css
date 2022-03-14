@@ -42,9 +42,8 @@ h6,
 ul {
   margin: 0;
 }
-h3{
+h3 {
   margin-top: -20px;
- 
 }
 img {
   max-width: 100%;
@@ -63,12 +62,12 @@ a:hover {
   outline: none;
 }
 
-.bg{
+.bg {
   background-image: url(https://img.freepik.com/free-photo/abstract-blur-empty-green-gradient-studio-well-use-as-background-website-template-frame-business-report_1258-54629.jpg?size=338&ext=jpg);
 }
 .wrapper {
   min-height: 100vh;
-  display:flex ;
+  display: flex;
   align-items: center;
 }
 
@@ -107,14 +106,14 @@ p {
 
 .form-group {
   position: relative;
-  display:flex;
+  display: flex;
   margin-bottom: 48px;
 }
 
 .form-group span {
   font-size: 20px;
   color: #77e7ab;
-  position:absolute;
+  position: absolute;
   top: 0px;
   transition: all 0.2s ease;
   transform-origin: 0 0;
@@ -133,14 +132,14 @@ p {
 }
 .form-group1 {
   position: relative;
-  display:flex;
+  display: flex;
   margin-bottom: 48px;
 }
 
 .form-group1 span {
   font-size: 20px;
   color: #77e7ab;
-  position:absolute;
+  position: absolute;
   top: -25px;
   transition: all 0.2s ease;
   transform-origin: 0 0;

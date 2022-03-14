@@ -1,5 +1,17 @@
-.profile h1,
-h5 {
-  color: black;
-  padding: 10px;
+.errorprofile {
+  margin-left: 50%;
+}
+.innerprofile {
+  min-width: 60%;
+  background: rgb(27, 109, 27);
+}
+.imageprofile {
+  margin-left: 35%;
+}
+.wrapper {
+  background-image: url(https://img.freepik.com/free-photo/abstract-blur-empty-green-gradient-studio-well-use-as-background-website-template-frame-business-report_1258-54629.jpg?size=338&ext=jpg);
+}
+.profile-form-group {
+  color: white;
+  font-size: larger;
 }
