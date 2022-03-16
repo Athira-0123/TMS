@@ -17,6 +17,7 @@ function AllocationForm(props) {
     starttime: "",
     endtime: "",
     venue: "",
+    title:""
   });
 
   const navigation = useNavigate();
@@ -28,6 +29,7 @@ function AllocationForm(props) {
   const handleChange = (e) => {
     const { name, value } = e.target;
     setAllocate({ ...allocate, [name]: value });
+    
   };
 
   async function fetchAPI() {
@@ -40,6 +42,8 @@ function AllocationForm(props) {
   }
 
   async function handleSubmit() {
+   
+
     const response = await fetch(
       `http://localhost:5001/api/admin/allocate/${id}`,
       {
@@ -53,6 +57,9 @@ function AllocationForm(props) {
     const result = await response.json();
 
     alert(result.message);
+    if(result.message==='Work allocated and email sent'){
+      navigation('/admin/view-allocations')
+    }
   }
 
   return (
@@ -107,10 +114,12 @@ function AllocationForm(props) {
             style={{ backgroundColor: "rgb(115, 143, 143)" }}
           />
         </div>
+
+
         <div className="cbp-mc-column">
           <label htmlFor="courseid">Course ID</label>
-          <select id="courseid" name="courseid" onChange={handleChange}>
-            <option className="courseselect">Choose course ID</option>
+          <select id="courseid" name="courseid" onChange={handleChange} value={formData.courseid}>
+            <option className="courseselect"></option>
             <option className="courseselect">01_DSA</option>
             <option className="courseselect">02_FSD</option>
             <option className="courseselect">03_RPA</option>
@@ -118,8 +127,8 @@ function AllocationForm(props) {
           </select>
 
           <label htmlFor="batchid">Batch ID</label>
-          <select id="batchid" name="batchid" onChange={handleChange}>
-            <option className="courseselect">Choose batch ID</option>
+          <select id="batchid" name="batchid" onChange={handleChange} value={formData.batchid}>
+            <option className="courseselect"></option>
             <option className="courseselect">DSA001</option>
             <option className="courseselect">DSA002</option>
             <option className="courseselect">DSA003</option>
@@ -140,11 +149,15 @@ function AllocationForm(props) {
             id="start"
             name="startdate"
             onChange={handleChange}
+            value={formData.startdate}
           />
 
           <label htmlFor="end">End date</label>
-          <input type="date" id="end" name="enddate" onChange={handleChange} />
+          <input type="date" id="end" name="enddate" onChange={handleChange} value={formData.enddate} />
+
         </div>
+
+
         <div className="cbp-mc-column">
           <label htmlFor="s-time">Start Time</label>
           <input
@@ -152,6 +165,7 @@ function AllocationForm(props) {
             id="s-time"
             name="starttime"
             onChange={handleChange}
+            value={formData.starttime}
           />
 
           <label htmlFor="e-time">End Time</label>
@@ -160,11 +174,19 @@ function AllocationForm(props) {
             id="e-time"
             name="endtime"
             onChange={handleChange}
+            value={formData.endtime}
           />
 
           <label htmlFor="venue">Meeting/venue link</label>
-          <input type="text" id="venue" name="venue" onChange={handleChange} />
+          <input type="text" id="venue" name="venue" onChange={handleChange} value={formData.venue} />
+
+          <label htmlFor="title">Meeting title</label>
+          <input type="text" id="title" name="title" onChange={handleChange} value={formData.title} />
+
+
         </div>
+
+
         <div>
           <div className="cbp-mc-submit-wrap">
             <input className="cbp-mc-submit" value="Allocate" type="submit" />

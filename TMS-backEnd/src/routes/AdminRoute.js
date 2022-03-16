@@ -72,7 +72,7 @@ function allocatemail(id, data) {
       var mailOptions = {
         from: "	tmsa36467@gmail.com",
         to: profile.email_address,
-        subject: "Course Assigned-" + profile.first_name,
+        subject:  'Hi'+' '+profile.first_name+', '+'you are scheduled for'+' '+data.title,
         html: `<h2>New Course Added By Admin</h2>
     
     <p>Hello <b>${
@@ -93,7 +93,7 @@ function allocatemail(id, data) {
         if (error) {
           console.log("Email not sent.Check again");
         } else {
-          console.log("Email sent");
+          console.log("Allocation mail sent");
         }
       });
     });
@@ -152,7 +152,8 @@ adminRouter.get("/table", (req, res) => {
 //api to get trainer allocation form prefilled
 
 adminRouter.get(`/:id`, (req, res) => {
-  res.header("Access-Control-Allow-Origin", "*");
+  
+    res.header("Access-Control-Allow-Origin", "*");
   res.header("Access-Control-Allow-Methods: GET, POST, PUT, DELETE");
   const id = req.params.id;
   enrollment_data.find({ _id: id }).then(function (article) {
@@ -162,55 +163,71 @@ adminRouter.get(`/:id`, (req, res) => {
 
 //api to post allocation data to database
 adminRouter.post("/allocate/:id", (req, res) => {
+  
   res.header("Access-Control-Allow-Origin", "*");
   res.header("Access-Control-Allow-Methods: GET, POST, PUT, DELETE");
 
   const id = req.params.id;
+  const data=req.body
+  const courseid = req.body.courseid;
+  const batchid=req.body.batchid
+  const startdate=req.body.startdate
+  const enddate=req.body.enddate
+  const starttime=req.body.starttime
+  const endtime=req.body.endtime
+  const venue=req.body.venue
+  const title=req.body.title
 
-  const data = req.body;
+  if(courseid==''||batchid==''||starttime==''||endtime==''||startdate==''||enddate==''||venue==''||title==''){
+    return res.json({message:'Fill all the fields'})
+  }
 
-  enrollment_data.find({ _id: id }).then(function (trainer) {
-    const results = trainer[0].allocations;
-    if (results.length == 0) {
+  enrollment_data.findOne({_id:id},{allocations: {$elemMatch: {'startdate': data.startdate,'starttime':data.starttime}}}, (err,UserInfo) => {
+
+    if (err){
+        return res.status(500).json({message:'Error'})
+    }    
+
+    if ((UserInfo.allocations).length>0) {
+      
+      return res.status(500).json({message:'Work already allocated for this period'})
+        
+
+    } 
+    if(UserInfo.allocations=[]){
       const filter = { _id: id };
-      const update = { $push: { allocations: data } };
-      enrollment_data
-        .findOneAndUpdate(filter, update, { new: true })
-        .then(function (article) {
-          allocatemail(id, data);
-          console.log("allocation mail sent");
-          res.json({ message: "Work allocated and email sent" });
-        });
-    }
-    results.forEach((result) => {
-      if (
-        result.startdate == data.startdate &&
-        result.starttime == data.starttime
-      ) {
-        res.json({ message: "Work already allocated for this period" });
-      } else {
-        const filter = { _id: id };
         const update = { $push: { allocations: data } };
         enrollment_data
           .findOneAndUpdate(filter, update, { new: true })
           .then(function (article) {
             allocatemail(id, data);
-            console.log("allocation mail sent");
-            res.json({ message: "Work allocated and email sent" });
+          
+            return res.json({ message: "Work allocated and email sent" });
           });
-      }
-    });
-  });
+
+    }
+
 });
 
-//api to view all allocations
+   
+ 
+  
 
-adminRouter.get("/viewalloocation", (req, res) => {
-  res.header("Access-Control-Allow-Origin", "*");
-  res.header("Access-Control-Allow-Methods: GET, POST, PUT, DELETE");
-  enrollment_data.find({ isApproved: true }).then(function (body) {
-    res.json(body);
-  });
 });
+
+
 
 module.exports = adminRouter;
+
+
+/*
+const filter = { _id: id };
+    const update = { $push: { allocations: data } };
+    enrollment_data
+      .findOneAndUpdate(filter, update, { new: true })
+      .then(function (article) {
+        allocatemail(id, data);
+       
+        res.json({ message: "Work allocated and email sent" });
+      });
+*/

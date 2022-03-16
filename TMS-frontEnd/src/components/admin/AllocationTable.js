@@ -49,6 +49,7 @@ function AllocationTable(props) {
             <th>Course</th>
             <th>Employment</th>
             <th></th>
+            <th></th>
           </tr>
         </thead>
         <tbody>
@@ -81,7 +82,10 @@ function AllocationTable(props) {
                         Allocate
                       </Link>
                     </Button>
-                    <Button variant="outlined" id="reject" onClick={deleteData}>
+                    
+                  </td>
+                  <td>
+                  <Button variant="outlined" id="reject" onClick={deleteData}>
                       Delete
                     </Button>
                   </td>
