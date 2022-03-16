@@ -44,23 +44,28 @@ function TrainerProfile(props) {
     ictak_course_handling: "",
   });
 
-  const handleSubmit = (e, trainerValues) => {
-    e.preventDefault();
-
-    navigation(`/trainer/edit/${trainerValues.id}`, { replace: true });
-  };
-
   var base64String = "";
   if (trainerValues.image !== undefined) {
-    base64String = btoa(
-      String.fromCharCode(...new Uint8Array(trainerValues.image.data.data))
-    );
+    try {
+      base64String = btoa(
+        new Uint8Array(trainerValues.image.data.data).reduce(function (
+          data,
+          byte
+        ) {
+          return data + String.fromCharCode(byte);
+        },
+        "")
+      );
+    } catch (error) {
+      console.log(error);
+    }
   }
+
   return (
     <>
       <div className="wrapper">
         <div className=" inner innerprofile">
-          <form onSubmit={handleSubmit}>
+          <form>
             <h3>My Profile</h3>
             <p>************</p>
 

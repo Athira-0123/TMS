@@ -59,7 +59,7 @@ function TrainerProfile(props) {
   };
 
   async function updateTrainer() {
-    console.log("AA");
+    
     const formData = new FormData();
     const fileInput = document.querySelector("#imageInput");
     formData.append("first_name", trainerValues.first_name);
