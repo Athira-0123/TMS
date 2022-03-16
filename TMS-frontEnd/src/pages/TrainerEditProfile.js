@@ -1,6 +1,7 @@
 // Edit the trainer profile
 import React, { useState, useEffect } from "react";
 import { useNavigate, useParams } from "react-router-dom";
+//import '../components/enrollment/Enrollment.css'
 
 function TrainerProfile(props) {
   const { id } = useParams();
