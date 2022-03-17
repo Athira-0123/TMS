@@ -1,0 +1,20 @@
+.errorprofile {
+    margin-left: 50%;
+  }
+  .innerprofile {
+    min-width: 60%;
+    color: black;
+    background: rgb(27, 109, 27);
+  }
+  .imageprofile {
+    margin-left: 35%;
+  }
+  .wrapperedit {
+    background-image: url(https://img.freepik.com/free-photo/abstract-blur-empty-green-gradient-studio-well-use-as-background-website-template-frame-business-report_1258-54629.jpg?size=338&ext=jpg);
+ 
+}
+  .profile-form-group {
+    color: white;
+    font-size: larger;
+  }
+  
