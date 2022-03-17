@@ -2,6 +2,7 @@
 
 import React, { useState, useEffect } from "react";
 import { Link, useNavigate, useParams } from "react-router-dom";
+import Logo from "../components/images/ictak-logo.png";
 import "./editprofile.css";
 function TrainerProfile(props) {
   const navigation = useNavigate();
@@ -64,19 +65,30 @@ function TrainerProfile(props) {
 
   return (
     <>
+    
       <div className="wrapperedit">
-        <div className=" inner innerprofile">
+        <div id="appbar">
+          <img src={Logo} alt='' id="ict"/>
+          
+          <Link to={'/'} id='log'>Logout</Link>
+          <Link to={`/trainer/${id}/view-allocations`} id='viewallo'>View Allocations</Link>
+        
+
+        </div>
+        <div className=" inner">
           <form>
             <h3>My Profile</h3>
-            <p>************</p>
+            
 
             <img
               className="imageprofile"
               style={{
                 width: 200,
                 height: 200,
+                marginRight:'500px',
                 resizeMode: "cover",
                 backgroundColor: "white",
+                borderRadius:'50%'
               }}
               src={`data:image/png;base64,${base64String}`}
               alt=""
@@ -194,10 +206,11 @@ function TrainerProfile(props) {
 
             <div className="btns">
               <button className="alink" value="Submit application">
-                <Link to={`/trainer/edit/${trainerValues._id}`}>Edit</Link>
+                <Link to={`/trainer/edit/${trainerValues._id}`} id='a-edit'>Edit</Link>
               </button>
-              <br />
+
             </div>
+
           </form>
         </div>
       </div>
@@ -205,5 +218,3 @@ function TrainerProfile(props) {
   );
 }
 export default TrainerProfile;
-
-

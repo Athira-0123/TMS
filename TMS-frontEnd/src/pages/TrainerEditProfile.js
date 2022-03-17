@@ -395,7 +395,9 @@
 
 // Edit the trainer profile
 import React, { useState, useEffect } from "react";
-import { useNavigate, useParams } from "react-router-dom";
+import { useNavigate, useParams,Link } from "react-router-dom";
+
+import Logo from "../components/images/ictak-logo.png";
 import './editprofile.css';
 
 function TrainerProfile(props) {
@@ -499,9 +501,17 @@ function TrainerProfile(props) {
   return (
     <>
       <div className="wrapperedit">
+      <div id="appbar">
+          <img src={Logo} alt='' id="ict"/>
+          
+          <Link to={'/'} id='log'>Logout</Link>
+          <Link to={`/trainer/${id}/view-allocations`} id='viewallo'>View Allocations</Link>
+        
+
+        </div>
         <div className="inner">
           <form onSubmit={handleSubmit}>
-            <h3>My Profile</h3>
+            <h3>Edit Profile</h3>
 
             <label className="form-group">
               <input
