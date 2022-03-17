@@ -136,7 +136,7 @@ th {
     /* Label the data */
     content: attr(data-column);
 
-    color: #000;
+    color: white;
     font-weight: bold;
   }
 }
