@@ -33,7 +33,7 @@ function Login() {
   const userLogin = async () => {
     const username = formValues.username;
     const password = formValues.password;
-    const response = await fetch("http://localhost:5001/api/user/login", {
+    const response = await fetch("/api/user/login", {
       method: "post",
       body: JSON.stringify({ username, password }),
       headers: {
@@ -41,7 +41,7 @@ function Login() {
       },
     });
     const body = await response.json();
-    console.log(body);
+    
     alert(body.message);
     if (body.message === "Authentication success.") {
       localStorage.setItem("hornbill", body.token);

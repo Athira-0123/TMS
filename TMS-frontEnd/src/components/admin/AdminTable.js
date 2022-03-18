@@ -21,7 +21,7 @@ function AdminTable(props) {
   }
 
   async function fetchAPI() {
-    const response = await fetch(`http://localhost:5001/api/enrollments`);
+    const response = await fetch(`/api/enrollments`);
     const body = await response.json();
 
     settableContent(body);
@@ -33,7 +33,7 @@ function AdminTable(props) {
       alert("Enter employment");
     } else {
       const email = e.target.parentElement.parentElement.cells[1].innerText;
-      const response = await fetch(`http://localhost:5001/api/admin/approve`, {
+      const response = await fetch(`/api/admin/approve`, {
         method: "put",
         body: JSON.stringify({ email, employment }),
         headers: {
@@ -49,7 +49,7 @@ function AdminTable(props) {
   async function deleteData(e) {
     const entry = e.target.parentElement.parentElement.cells[1].innerText;
 
-    const response = await fetch(`http://localhost:5001/api/admin/deleteData`, {
+    const response = await fetch(`/api/admin/deleteData`, {
       method: "delete",
       body: JSON.stringify({ entry }),
       headers: {

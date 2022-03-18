@@ -12,9 +12,9 @@ function ViewTable(props) {
   }, []);
 
   async function fetchAPI() {
-    const response = await fetch(`http://localhost:5001/api/admin/table`);
+    const response = await fetch(`/api/admin/table`);
     const body = await response.json();
-    console.log(body);
+   
     setView(body);
   }
 

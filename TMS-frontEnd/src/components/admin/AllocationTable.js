@@ -13,7 +13,7 @@ function AllocationTable(props) {
   }, []);
 
   async function fetchAPI() {
-    const response = await fetch(`http://localhost:5001/api/admin/table`);
+    const response = await fetch(`/api/admin/table`);
     const body = await response.json();
 
     settableContent(body);
@@ -22,7 +22,7 @@ function AllocationTable(props) {
   async function deleteData(e) {
     const entry = e.target.parentElement.parentElement.cells[1].innerText;
 
-    const response = await fetch(`http://localhost:5001/api/admin/deleteData`, {
+    const response = await fetch(`/api/admin/deleteData`, {
       method: "delete",
       body: JSON.stringify({ entry }),
       headers: {

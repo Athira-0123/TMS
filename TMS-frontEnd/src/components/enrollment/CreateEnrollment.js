@@ -88,7 +88,7 @@ function CreateEnrollment(props) {
     );
     formData.append("image", fileInput.files[0]);
 
-    const response = await fetch(`http://localhost:5001/api/enrollments`, {
+    const response = await fetch(`/api/enrollments`, {
       method: "post",
       body: formData,
     });

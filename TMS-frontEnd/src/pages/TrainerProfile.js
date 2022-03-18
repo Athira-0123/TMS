@@ -13,13 +13,13 @@ function TrainerProfile(props) {
     fetchAPI();
   }, []);
   async function fetchAPI() {
-    const response = await fetch(`http://localhost:5001/api/trainer/${id}`, {
+    const response = await fetch(`/api/trainer/${id}`, {
       headers: {
         "x-access-token": localStorage.getItem("hornbill"),
       },
     });
     const body = await response.json();
-    console.log(body);
+    
     setTrainerValues(body);
   }
   // Storing trainer details

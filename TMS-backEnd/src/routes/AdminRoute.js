@@ -91,9 +91,9 @@ function allocatemail(id, data) {
 
       transporter.sendMail(mailOptions, function (error, info) {
         if (error) {
-          console.log("Email not sent.Check again");
+          //console.log("Email not sent.Check again");
         } else {
-          console.log("Allocation mail sent");
+          //console.log("Allocation mail sent");
         }
       });
     });
@@ -220,14 +220,3 @@ adminRouter.post("/allocate/:id", (req, res) => {
 module.exports = adminRouter;
 
 
-/*
-const filter = { _id: id };
-    const update = { $push: { allocations: data } };
-    enrollment_data
-      .findOneAndUpdate(filter, update, { new: true })
-      .then(function (article) {
-        allocatemail(id, data);
-       
-        res.json({ message: "Work allocated and email sent" });
-      });
-*/

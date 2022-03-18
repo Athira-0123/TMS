@@ -33,10 +33,9 @@ function AllocationForm(props) {
   };
 
   async function fetchAPI() {
-    const response = await fetch(`http://localhost:5001/api/admin/${id}`);
+    const response = await fetch(`/api/admin/${id}`);
     const body = await response.json();
-    console.log(body);
-    //setFormData(body)
+    
     const result = Object.values(body)[0];
     setFormData(result);
   }
@@ -45,7 +44,7 @@ function AllocationForm(props) {
    
 
     const response = await fetch(
-      `http://localhost:5001/api/admin/allocate/${id}`,
+      `/api/admin/allocate/${id}`,
       {
         method: "post",
         body: JSON.stringify(allocate),
