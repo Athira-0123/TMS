@@ -35,12 +35,12 @@ function TrainerAllocations(props) {
             <thead>
                 <tr id='thead'>
                 
-                <th>Course ID</th>
-                <th>Batch ID</th>
-                <th>Date</th>
-                <th>Time</th>
-                <th>Meeting Title</th>
-                <th>Venue</th>
+                <th id='th'>Course ID</th>
+                <th id='th'>Batch ID</th>
+                <th id='th'>Date</th>
+                <th id='th'>Time</th>
+                <th id='th'>Meeting Title</th>
+                <th id='th'>Venue</th>
                 
                 </tr>
             </thead>
@@ -48,17 +48,17 @@ function TrainerAllocations(props) {
             {tableContent.map((i) =>
                 <tr>
                 
-                <td data-column="Course ID">{i.courseid}</td>
-                <td data-column="Batch ID">{i.batchid}</td>
-                <td data-column="Date">
+                <td id='td' data-column="Course ID">{i.courseid}</td>
+                <td id='td' data-column="Batch ID">{i.batchid}</td>
+                <td id='td' data-column="Date">
                 {i.startdate} to {i.enddate}
                 </td>
-                <td data-column="Time">
+                <td id='td' data-column="Time">
                 {i.starttime} to {i.endtime}
                 </td>
-                <td data-column='Meeting Title'>{i.title}</td>
-                <td data-column="Venue">{i.venue}</td>
-                <td>
+                <td id='td' data-column='Meeting Title'>{i.title}</td>
+                <td id='td' data-column="Venue">{i.venue}</td>
+                <td id='td'>
                 
                 </td>
             </tr>

@@ -71,7 +71,7 @@
   background-color: white;
   color: black;
 }
-td {
+#td {
   color: white;
   background-color: black;
 }
@@ -81,7 +81,7 @@ td {
   height: 100%;
   width: 100%;
 }
-th {
+#th {
   background-color: rgb(31, 75, 31);
 }
 @media only screen and (max-width: 860px),
